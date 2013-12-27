@@ -22,6 +22,7 @@ SOURCE_BUILD="avra-${VERSION}-src"
 function avra-build-source {
 	echo "Creating ${SOURCE_BUILD} release"
 	mkdir -p ${BUILD_DIR}/${SOURCE_BUILD}
+	mkdir -p ${ARCHIVE_DIR}
 	cp -Rvf ${ROOT_DIR} ${BUILD_DIR}/${SOURCE_BUILD}
 	cd ${BUILD_DIR}
 	tar -cjvf ${SOURCE_BUILD}.tar.bz2 ${SOURCE_BUILD}/
@@ -29,9 +30,8 @@ function avra-build-source {
 	cd ${ARCHIVE_DIR}
 	sha1sum * > ${ARCHIVE_DIR}/SHA1SUM
 	cd ${ROOT_DIR}
-	rm -R ${BUILD_DIR}
+	rm -Rf ${BUILD_DIR}
 	cat ${ARCHIVE_DIR}/SHA1SUM
-
 }
 
 function avra-build-linux {
@@ -52,7 +52,7 @@ function avra-build-linux {
 	cd ${ARCHIVE_DIR}
 	sha1sum * > ${ARCHIVE_DIR}/SHA1SUM
 	cd ${ROOT_DIR}
-	rm -R ${BUILD_DIR}
+	rm -Rf ${BUILD_DIR}
 	cat ${ARCHIVE_DIR}/SHA1SUM
 }
 
