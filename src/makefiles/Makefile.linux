@@ -21,14 +21,18 @@ BINFILES = avra README ChangeLog COPYING avra.1 avra.txt
 
 VERSION = 1.1.0
 
+DESTDIR=
+
+PREFIX=/usr/local
+
 #********************************************************************
 
 all: avra
 
 install: avra
-	cp avra /usr/local/bin
-	cp avra.1 /usr/local/man/man1
-	chmod +r /usr/local/man/man1/avra.1
+	cp avra ${DESTDIR}/${PREFIX}/bin
+	cp avra.1 ${DESTDIR}/${PREFIX}/man/man1
+	chmod +r ${DESTDIR}/${PREFIX}/man/man1/avra.1
 
 clean:
 	rm -f avra *.o *.p *~
